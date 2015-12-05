@@ -353,12 +353,17 @@ module x_end_bracket(motor_end, integral_support = false){
                 // Clamp nut traps
                 //
                 for(x = [front - clamp_hole_inset, back + clamp_hole_inset]) {
-                    for(i = [-1,1])
-                        translate([x, side * bar_y + i * (X_bar_dia / 2 + M3_clearance_radius), -thickness / 2])
+                    for(i = [-1,1]) {
+                        translate([x, side * bar_y + i * (X_bar_dia / 2 + M3_clearance_radius), -thickness / 2]) {
                             nut_trap(M3_clearance_radius, M3_nut_radius, M3_nut_trap_depth, supported = integral_support);
+                            cylinder(h=4, r1=M3_tap_radius, r2=M3_tap_radius, center=false);
+                        }
+                    }
 
                     translate([x, side * bar_y, 0])
                         cube([M3_clearance_radius * 2 - eta, X_bar_dia + M3_clearance_radius * 2, X_bar_dia * 0.8], center = true);
+                    
+                    
                 }
             }
         }
@@ -598,10 +603,10 @@ module x_idler_bracket_x2_stl() facing_pair(-1) x_idler_bracket_stl(false);
 module x_idler_support_x2_stl() facing_pair(-1) x_idler_support_stl();
 
 
-if(0)
+if(1)
     x_ends_stl();
 else
-    if(0)
+    if(1)
         x_end_assembly(false);
     else
         mirror ([1,0,0]) x_end_assembly(true);
