@@ -6,6 +6,8 @@
 
 // based on http://www.thingiverse.com/thing:8063 by MiseryBot, CC license
 
+include <fan_sunon.scad>;
+
 fan80x38 = [80, 38, 75, 35.75, M4_cap_screw, 40,   4.3, 84];
 fan80x25 = [80, 25, 75, 35.75, M4_cap_screw, 40,   4.3, 84];
 fan70x15 = [70, 15, 66, 30.75, M4_cap_screw, 29,   3.8, 70];
@@ -22,7 +24,7 @@ function fan_screw(type)          = type[4];
 function fan_hub(type)            = type[5];
 function fan_thickness(type)      = type[6];
 function fan_outer_diameter(type) = type[7];
-
+function fan_is_radial(type) = type[8] == undef ? false : type[8];
 
 module fan(type) {
     width = fan_width(type);
@@ -93,7 +95,10 @@ module fan_assembly(type, thickness, include_fan = false) {
     if(include_fan)
         color(fan_color)
             render()
-                fan(type);
+                if (type == sunon50x50x20)
+                    fan_sunon_505020();
+                else
+                    fan(type);
 
     hole_pitch = fan_hole_pitch(type);
     screw = fan_screw(type);

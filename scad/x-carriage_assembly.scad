@@ -12,7 +12,7 @@ include <x-carriage.scad>
 module x_carriage_assembly(show_extruder = true, show_fan = true) {
     if(show_extruder) {
         rotate([0, 180, 0])
-             extruder_assembly(false, false);
+             extruder_assembly(true, true);
 
         for(end = [-1, 1])
             translate([extruder_mount_pitch / 2 * end, 0, nut_trap_thickness])
@@ -28,8 +28,20 @@ module x_carriage_assembly(show_extruder = true, show_fan = true) {
     //
     if(show_fan)
         translate([0, 0, -hot_end_bodge(hot_end)])
-            render() x_carriage_fan_assembly();
-
+            difference() {
+                //!fan_assembly(sunon50x50x20, 10, true);
+                x_carriage_fan_assembly();
+                			// coupe vers la droite
+      /*      translate([-infinity,0,0])
+			cube([2*infinity,2*infinity,2*infinity], center=true); */
+			// coupe vers le haut
+/*            mirror([0,0,1])
+            translate([-50,0,10])
+            cube([infinity,infinity,infinity]); */
+			// coupe vers le bas
+			/*translate([-infinity/2, -infinity/2,-infinity/2 - 5])
+                cube([infinity,infinity,infinity]); */
+            }
     assembly("x_carriage_assembly");
     color(x_carriage_color) render() x_carriage_stl();
     //
@@ -44,7 +56,7 @@ module x_carriage_assembly(show_extruder = true, show_fan = true) {
                 rotate([-90, 0, 0])
                     nut(M3_nut, true);
         }
-        /*
+        
     //
     // Bearings
     //
@@ -99,12 +111,12 @@ module x_carriage_assembly(show_extruder = true, show_fan = true) {
     translate([-length / 2 + base_offset + lug_width - M3_nut_trap_depth, -width / 2 + slot_y, (x_carriage_offset() - pulley_inner_radius - belt_thickness(X_belt)) /2])
         rotate([90, 0, 90])
             nut(M3_nut, false);   // tensioning nut
-*/
+
     end("x_carriage_assembly");
 }
 
 if(0)
-    if(0)  {
+    if(1)  {
         intersection() {
             x_carriage_fan_duct_stl();
             *translate([0, 0, -10])
