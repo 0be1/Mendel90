@@ -19,7 +19,7 @@ JHeadMk4 =            [jhead, "HEJH16340: JHead MK4 hot end",   64,  5.1, 16,   
 JHeadMk5 =            [jhead, "HEJH16340: JHead MK5 hot end",   54,  5.1, 16,    40, "black",     12,    4.64, 13, [0, 2.38, -5], 20,   20];
 JHeadMk5x =           [jhead, "HEJH16340: JHead MK5 hot end", 51.2,  5.1, 16,    40, "black",     12,    4.64, 13, [0, 2.38, -5], 20,   20];
 e3dv5 =               [e3d,   "HEE3DV5NB: E3D V5 direct",       70,  3.7, 16,  50.1, "lightgrey", 12,    6,    15, [1, 5,  -4.5], 14.5, 28];
-e3dv6 =               [e3d,   "HEE3DV6NB: E3D V6 direct",       62,  3.7, 16,  42.7, "lightgrey", 12,    6,    15, [1, 5,  -4.5], 14,   21];
+e3dv6 =               [e3d,   "HEE3DV6NB: E3D V6 direct",       62,  3.7, 16,  42.7, "lightgrey", 12,    6,    17, [1, 5,  -4.5], 14,   21];
 e3d_clone =           [e3d,   "HEE3DCLNB: E3D clone aliexpress",66,  6.8, 16,    46, "lightgrey", 12,    5.6,  15, [1, 5,  -4.5], 14.5, 21];
 
 function hot_end_style(type)              = type[0];

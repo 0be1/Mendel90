@@ -1,4 +1,4 @@
-//
+///#
 // Mendel90
 //
 // GNU GPL v2
@@ -26,16 +26,16 @@ module x_carriage_assembly(show_extruder = true, show_fan = true) {
     //
     // Fan assembly
     //
-    if(show_fan)
+   if(show_fan)
         translate([0, 0, -hot_end_bodge(hot_end)])
             difference() {
                 //!fan_assembly(sunon50x50x20, 10, true);
                 x_carriage_fan_assembly();
                 			// coupe vers la droite
-      /*      translate([-infinity,0,0])
-			cube([2*infinity,2*infinity,2*infinity], center=true); */
+            *translate([-infinity,0,0])
+			cube([2*infinity,2*infinity,2*infinity], center=true); 
 			// coupe vers le haut
-/*            mirror([0,0,1])
+            /*mirror([0,0,1])
             translate([-50,0,10])
             cube([infinity,infinity,infinity]); */
 			// coupe vers le bas
@@ -115,8 +115,8 @@ module x_carriage_assembly(show_extruder = true, show_fan = true) {
     end("x_carriage_assembly");
 }
 
-if(0)
-    if(1)  {
+if(1)
+    if(0)  {
         intersection() {
             x_carriage_fan_duct_stl();
             *translate([0, 0, -10])
@@ -124,7 +124,7 @@ if(0)
         }
     }
     else
-        if(0)
+        if(1)
             x_carriage_fan_ducts_stl();
         else
             x_carriage_parts_stl();

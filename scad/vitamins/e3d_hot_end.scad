@@ -153,7 +153,7 @@ module e3d_hot_end(type, filament) {
     rotate([0, 0, 90])
         heater_block(type);
 
-    translate([0, 0, inset - insulator_length])
+    translate([0, 0, inset - insulator_length ])
         e3d_fan();
 
 }

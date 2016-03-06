@@ -29,7 +29,7 @@ module fan_sunon_505020() {
         union() {
             // main body
             translate([0, 0, -infinity/2]) {
-                linear_extrude(h=infinity)
+                linear_extrude(height=infinity)
                     spiral(angle1=90, r1=r1, r2=r2);
                 // duct
                 cube([fan_duct_height(), 25, infinity]);
